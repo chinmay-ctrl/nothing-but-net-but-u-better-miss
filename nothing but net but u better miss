@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Nothing But Net, But You Better Miss</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+  </style>
+</head>
+<body>
+  <h1>Nothing But Net, But You Better Miss</h1>
+  <p>Try to miss the shot! 🏀</p>
+  <input type="text" id="shot-input" placeholder="Shoot? (y/n)">
+  <button id="submit-btn">Submit</button>
+  <p id="result"></p>
+
+  <script>
+    let attempts = 3;
+    let score = 0;
+
+    document.getElementById("submit-btn").addEventListener("click", () => {
+      const shot = document.getElementById("shot-input").value.toLowerCase();
+      if (shot === "y") {
+        if (Math.random() < 0.8) { // 80% chance of scoring
+          document.getElementById("result").innerHTML = "Yikes, you're really good at this—too bad that's bad. 😂";
+          score++;
+        } else {
+          document.getElementById("result").innerHTML = "Loser! And we mean that as a compliment! 😊";
+          attempts--;
+        }
+      } else {
+        document.getElementById("result").innerHTML = "You didn't even try! 😔";
+        attempts--;
+      }
+      document.getElementById("shot-input").value = "";
+      if (attempts === 0) {
+        document.getElementById("result").innerHTML = `Your final score is: ${score}`;
+      }
+    });
+  </script>
+</body>
+</html>
